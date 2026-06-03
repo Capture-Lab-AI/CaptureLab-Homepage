@@ -27,7 +27,7 @@ export function Audiences() {
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
               Who it&rsquo;s for
             </p>
-            <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
+            <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[44px] lg:text-[52px]">
               Made for everyone working a deal.
             </h2>
           </div>

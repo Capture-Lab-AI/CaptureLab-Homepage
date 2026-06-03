@@ -14,7 +14,7 @@ export function Backed() {
     <section className="border-t border-rule bg-bg-soft">
       <div className="mx-auto max-w-content px-6 py-14 md:py-16">
         <ScrollReveal>
-          <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
+          <p className="text-center font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
             Supported by a team from
           </p>
           <ul className="mx-auto mt-9 flex max-w-3xl flex-wrap items-center justify-center gap-x-14 gap-y-8 md:mt-10 md:gap-x-20">

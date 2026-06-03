@@ -14,7 +14,7 @@ export function Problem() {
                 The best signal in real estate is also the one most brokers
                 miss.
               </h2>
-              <p className="mt-8 max-w-prose text-[17px] leading-[1.65] text-ink-2 md:text-[18px]">
+              <p className="mt-6 max-w-prose text-[17px] leading-[1.65] text-ink-2 md:text-[18px]">
                 You spend half the day jumping between CoStar, LinkedIn, Google
                 News, and your CRM, trying to figure out which companies to call
                 this week. Capture Lab does that work for you, overnight.

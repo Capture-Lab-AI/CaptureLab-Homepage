@@ -44,7 +44,7 @@ export function Signals() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                 The score
               </p>
-              <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
+              <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[44px] lg:text-[52px]">
                 What pushes a prospect to the top of your call list.
               </h2>
               <p className="mt-6 max-w-prose text-[17px] leading-[1.65] text-ink-2">
@@ -54,12 +54,10 @@ export function Signals() {
             </div>
 
             <ul className="lg:col-span-7">
-              {signals.map(({ Icon, label, title, body }, i) => (
+              {signals.map(({ Icon, label, title, body }) => (
                 <li
                   key={label}
-                  className={`grid grid-cols-[auto_120px_1fr] items-start gap-x-6 gap-y-2 border-t border-rule py-7 first:border-t-0 first:pt-0 ${
-                    i === signals.length - 1 ? "" : ""
-                  }`}
+                  className="grid grid-cols-[auto_120px_1fr] items-start gap-x-6 gap-y-2 border-t border-rule py-7 first:border-t-0 first:pt-0"
                 >
                   <div className="mt-1 flex h-9 w-9 items-center justify-center border border-rule bg-bg-elev text-ink-2">
                     <Icon className="h-4 w-4" strokeWidth={1.5} />

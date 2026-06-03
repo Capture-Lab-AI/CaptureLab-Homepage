@@ -13,7 +13,7 @@ const tickerItems = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-content px-6 pb-24 pt-24 md:pb-32 md:pt-36 lg:pb-40 lg:pt-44">
+      <div className="mx-auto max-w-content px-6 pb-24 pt-20 md:pb-32 md:pt-28 lg:pb-40 lg:pt-36">
         <ScrollReveal>
           <h1 className="font-display text-[44px] font-normal leading-[1.02] tracking-[-0.02em] text-ink sm:text-[60px] md:text-[76px] lg:text-[88px]">
             Every lease in your market,
