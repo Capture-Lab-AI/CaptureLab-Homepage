@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 
 const inter = Inter({
@@ -8,11 +9,25 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
+// Libre Caslon Condensed — the editorial display serif used across the
+// Capture Lab product for page titles (vendored from
+// github.com/ertekinno/libre-caslon-condensed). Keeps the homepage's
+// headline typography identical to the app.
+const libreCaslonCondensed = localFont({
+  variable: "--font-display",
+  src: [
+    {
+      path: "./fonts/LibreCaslonCondensed-Variable.woff2",
+      style: "normal",
+      weight: "400 700",
+    },
+    {
+      path: "./fonts/LibreCaslonCondensed-VariableItalic.woff2",
+      style: "italic",
+      weight: "400 700",
+    },
+  ],
   display: "swap",
-  variable: "--font-fraunces",
-  axes: ["opsz", "SOFT"],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -41,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${libreCaslonCondensed.variable} ${jetbrainsMono.variable}`}>
       <body>{children}</body>
     </html>
   )

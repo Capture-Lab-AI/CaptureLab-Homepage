@@ -20,14 +20,14 @@ const audiences = [
 
 export function Audiences() {
   return (
-    <section id="why-capture-lab" className="scroll-mt-20 border-t border-rule bg-bg-elev/40">
+    <section id="why-capture-lab" className="scroll-mt-20 border-t border-rule bg-bg-soft">
       <div className="mx-auto max-w-content px-6 py-24 md:py-32 lg:py-40">
         <ScrollReveal>
           <div className="mb-16 max-w-3xl md:mb-20">
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
               Who it&rsquo;s for
             </p>
-            <h2 className="font-display mt-5 text-balance text-[34px] font-light leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
+            <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
               Made for everyone working a deal.
             </h2>
           </div>

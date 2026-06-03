@@ -3,20 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --bg: #fbf3ee;
-  --bg-elev: #fff6f2;
-  --bg-deep: #15090b;
+  /* Surfaces — warm near-white base with white cards, matching the product's
+     Mercury/Granola-style palette (app --background #fbfaf8 / --card #ffffff). */
+  --bg: #fbf9f7;
+  --bg-elev: #ffffff;
+  --bg-soft: #f4f2ef;
+  --bg-deep: #181113;
 
-  --ink: #0a0a0a;
-  --ink-2: #404040;
-  --ink-3: #737373;
+  /* Ink — warm near-black foreground over warm stone greys. */
+  --ink: #0e0d0c;
+  --ink-2: #44403c;
+  --ink-3: #78716c;
 
-  --rule: #eddcd3;
-  --rule-strong: #1a1a1a;
+  --rule: #e9e5df;
+  --rule-strong: #1a1917;
 
-  --accent: #0f4a3f;
-  --accent-soft: #e8f0ec;
-  --accent-ink: #0a2620;
+  /* Accent — Capture Lab pink (app --color-pink-500 / pink-50 / pink-900). */
+  --accent: #a53860;
+  --accent-soft: #fff2f3;
+  --accent-ink: #450920;
 }
 
 html {
@@ -40,8 +45,8 @@ body {
 
 @layer utilities {
   .font-display {
-    font-family: var(--font-fraunces), ui-serif, Georgia, serif;
-    font-feature-settings: "ss01";
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    letter-spacing: -0.02em;
   }
 
   .text-balance {

@@ -15,7 +15,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="mx-auto max-w-content px-6 pb-24 pt-24 md:pb-32 md:pt-36 lg:pb-40 lg:pt-44">
         <ScrollReveal>
-          <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-[-0.02em] text-ink sm:text-[60px] md:text-[76px] lg:text-[88px]">
+          <h1 className="font-display text-[44px] font-normal leading-[1.02] tracking-[-0.02em] text-ink sm:text-[60px] md:text-[76px] lg:text-[88px]">
             Every lease in your market,
             <span className="block">18 months early.</span>
           </h1>
@@ -57,7 +57,7 @@ export function Hero() {
       </div>
 
       <ScrollReveal delay={150}>
-        <div className="border-y border-rule bg-bg-elev/40">
+        <div className="border-y border-rule bg-bg-soft">
           <div className="mx-auto flex max-w-content flex-wrap items-center justify-between gap-x-10 gap-y-3 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
             <span className="text-accent">Signals we watch</span>
             <div className="flex flex-wrap items-center gap-x-7 gap-y-2">

@@ -16,12 +16,13 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-fraunces)", "ui-serif", "Georgia", "serif"],
+        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
         bg: "var(--bg)",
         "bg-elev": "var(--bg-elev)",
+        "bg-soft": "var(--bg-soft)",
         "bg-deep": "var(--bg-deep)",
         ink: "var(--ink)",
         "ink-2": "var(--ink-2)",

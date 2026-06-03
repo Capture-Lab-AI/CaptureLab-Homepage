@@ -44,7 +44,7 @@ export function Signals() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                 The score
               </p>
-              <h2 className="font-display mt-5 text-balance text-[34px] font-light leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
+              <h2 className="font-display mt-5 text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[42px] lg:text-[48px]">
                 What pushes a prospect to the top of your call list.
               </h2>
               <p className="mt-6 max-w-prose text-[17px] leading-[1.65] text-ink-2">

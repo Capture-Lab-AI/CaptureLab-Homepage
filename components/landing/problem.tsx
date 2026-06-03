@@ -10,7 +10,7 @@ export function Problem() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-3">
                 The problem
               </p>
-              <h2 className="font-display mt-5 max-w-2xl text-balance text-[34px] font-light leading-[1.1] tracking-[-0.02em] text-ink md:text-[44px] lg:text-[52px]">
+              <h2 className="font-display mt-5 max-w-2xl text-balance text-[34px] font-normal leading-[1.1] tracking-[-0.02em] text-ink md:text-[44px] lg:text-[52px]">
                 The best signal in real estate is also the one most brokers
                 miss.
               </h2>
@@ -25,7 +25,7 @@ export function Problem() {
           <div className="lg:col-span-5">
             <ScrollReveal delay={100}>
               <div className="flex h-full flex-col justify-center border-l border-rule pl-8 lg:pl-12">
-                <p className="font-display text-[88px] font-light leading-none tracking-[-0.04em] text-accent md:text-[110px] lg:text-[132px]">
+                <p className="font-display text-[88px] font-normal leading-none tracking-[-0.04em] text-accent md:text-[110px] lg:text-[132px]">
                   18
                   <span className="font-mono text-[14px] tracking-normal text-ink-3 md:text-[15px]">
                     {" "}mo
