@@ -1,14 +1,25 @@
-import Link from "next/link"
+import Link from "next/link";
+import { Reveal } from "./motion";
+import { Year } from "./year";
 
 export function Footer() {
   return (
-    <footer className="bg-bg-deep">
-      <div className="mx-auto max-w-content border-t border-white/10 px-6 py-10 md:py-12">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+    <footer className="overflow-hidden bg-bg-deep">
+      <div className="mx-auto max-w-content px-6">
+        {/* Closing statement */}
+        <Reveal>
+          <p className="font-display max-w-3xl py-20 text-balance text-[30px] font-normal leading-[1.12] tracking-[-0.02em] text-[color:var(--on-deep)] md:py-28 md:text-[44px] lg:text-[52px]">
+            Capture the knowledge.{" "}
+            <span className="text-[color:var(--on-deep-3)]">Run the work.</span>
+          </p>
+        </Reveal>
+
+        {/* Footer row */}
+        <div className="flex flex-col items-start justify-between gap-6 border-t border-[color:var(--on-deep-rule)] py-10 md:flex-row md:items-center md:py-12">
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="font-display text-[20px] font-medium leading-none tracking-tight text-bg"
+              className="font-display text-[20px] font-medium leading-none tracking-tight text-[color:var(--on-deep)]"
             >
               Capture Lab
             </Link>
@@ -17,7 +28,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-white/70 transition-colors hover:text-white"
+              className="text-[color:var(--on-deep-2)] transition-colors hover:text-[color:var(--on-deep)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +45,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X (Twitter)"
-              className="text-white/70 transition-colors hover:text-white"
+              className="text-[color:var(--on-deep-2)] transition-colors hover:text-[color:var(--on-deep)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,17 +59,39 @@ export function Footer() {
             </a>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-7 gap-y-2 font-mono text-[11px] uppercase tracking-[0.14em] text-bg/60">
-            <Link href="/privacy" className="transition-colors hover:text-bg">
+          <nav className="eyebrow flex flex-wrap items-center gap-x-7 gap-y-2 text-[color:var(--on-deep-3)]">
+            <a
+              href="#how-it-works"
+              className="transition-colors hover:text-[color:var(--on-deep)]"
+            >
+              How it works
+            </a>
+            <a
+              href="#security"
+              className="transition-colors hover:text-[color:var(--on-deep)]"
+            >
+              Security
+            </a>
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-[color:var(--on-deep)]"
+            >
               Privacy
             </Link>
           </nav>
 
-          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-bg/40">
-            © {new Date().getFullYear()} Capture Lab
+          <p className="eyebrow text-[color:var(--on-deep-3)]">
+            © <Year /> Capture Lab
           </p>
         </div>
       </div>
+
+      {/* Oversized closing wordmark */}
+      <div aria-hidden className="select-none px-6 pb-6">
+        <p className="font-display whitespace-nowrap text-[color:var(--on-deep)] opacity-[0.06] text-[22vw] font-medium leading-[0.8] tracking-[-0.04em]">
+          Capture Lab
+        </p>
+      </div>
     </footer>
-  )
+  );
 }

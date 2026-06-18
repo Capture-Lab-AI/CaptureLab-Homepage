@@ -1,13 +1,13 @@
-import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
-import localFont from "next/font/local"
-import "./globals.css"
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-})
+});
 
 // Libre Caslon Condensed — the editorial display serif used across the
 // Capture Lab product for page titles (vendored from
@@ -28,36 +28,39 @@ const libreCaslonCondensed = localFont({
     },
   ],
   display: "swap",
-})
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-jetbrains-mono",
-})
+});
 
 export const metadata: Metadata = {
-  title: "Capture Lab — Prospecting autopilot for commercial real estate",
+  title: "Capture Lab — The agentic automation platform",
   description:
-    "Capture Lab is an AI prospecting platform built for CRE brokerages. Discover off-market opportunities, enrich every prospect automatically, and start each day with an AI-drafted task queue grounded in real signals.",
+    "Capture Lab learns how your business runs from the systems you already use, turns it into executable knowledge, and lets AI agents run your processes — reliably, transparently, and securely. No scripts. No months of setup.",
   metadataBase: new URL("https://capturelab.example.com"),
   openGraph: {
-    title: "Capture Lab — Prospecting autopilot for commercial real estate",
+    title: "Capture Lab — The agentic automation platform",
     description:
-      "Every lease expiring in your market. Surfaced 18 months early.",
+      "Capture Lab learns how your business runs. Then automates it.",
     type: "website",
     images: ["/og.png"],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${libreCaslonCondensed.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${libreCaslonCondensed.variable} ${jetbrainsMono.variable}`}
+    >
       <body>{children}</body>
     </html>
-  )
+  );
 }

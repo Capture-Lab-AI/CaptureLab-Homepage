@@ -1,10 +1,7 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
@@ -17,7 +14,12 @@ const config = {
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
-        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
+        ],
       },
       colors: {
         bg: "var(--bg)",
@@ -32,6 +34,10 @@ const config = {
         accent: "var(--accent)",
         "accent-soft": "var(--accent-soft)",
         "accent-ink": "var(--accent-ink)",
+        "on-deep": "var(--on-deep)",
+        "on-deep-2": "var(--on-deep-2)",
+        "on-deep-3": "var(--on-deep-3)",
+        "on-deep-rule": "var(--on-deep-rule)",
       },
       maxWidth: {
         prose: "42rem",
@@ -40,6 +46,6 @@ const config = {
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
