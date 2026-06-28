@@ -59,7 +59,7 @@ export function Nav() {
 
         <div className="hidden items-center gap-5 md:flex">
           <a
-            href="https://app.capture-lab.net/"
+            href="https://app.capture-lab.com/"
             className="eyebrow text-[13px] text-ink transition-colors duration-200 hover:text-accent"
           >
             Sign in
@@ -115,7 +115,7 @@ export function Nav() {
                 Book a demo
               </LinkButton>
               <LinkButton
-                href="https://app.capture-lab.net/"
+                href="https://app.capture-lab.com/"
                 variant="outline"
                 size="md"
               >
