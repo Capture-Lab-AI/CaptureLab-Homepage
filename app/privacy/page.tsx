@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "What Capture Lab collects when you sign in with Google, how we use it, and how to delete your account.",
 }
 
-const LAST_UPDATED = "May 30, 2026"
+const LAST_UPDATED = "June 29, 2026"
 
 export default function PrivacyPage() {
   return (
@@ -36,9 +36,9 @@ export default function PrivacyPage() {
           Privacy policy
         </h1>
         <p className="mt-6 text-[15px] leading-relaxed text-ink-2 text-pretty">
-          Capture Lab is a commercial real-estate prospecting dashboard for
-          brokerage teams. This page describes what we collect when you sign in
-          with Google, what we do with it, and how you can have it removed.
+          Capture Lab is an agentic automation platform for IT teams. This page
+          describes what we collect when you sign in with Google, what we do
+          with it, and how you can have it removed.
         </p>
 
         <section className="mt-12">
@@ -83,7 +83,8 @@ export default function PrivacyPage() {
             We do not sell your Google account data, and we do not share it
             with third parties for their own purposes. Account data is stored
             in our Postgres database (hosted on Railway in the US region),
-            scoped to your firm&rsquo;s workspace, and encrypted in transit.
+            scoped to your organization&rsquo;s workspace, and encrypted in
+            transit.
             The only processors that touch your account data are the
             infrastructure providers we use to run the product (our database
             host, our authentication provider).
