@@ -11,16 +11,12 @@ export function FinalCTA() {
         <div className="relative mx-auto max-w-content px-6 py-28 text-[color:var(--on-deep)] md:py-36 lg:py-44">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="eyebrow text-accent">See it on your stack</p>
-              <h2 className="font-display mt-6 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.02em] text-[color:var(--on-deep)] md:text-[56px] lg:text-[68px]">
-                Capture the knowledge,{" "}
-                <span className="block">
-                  run the <em className="italic">work</em>.
-                </span>
+              <h2 className="font-display text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.02em] text-[color:var(--on-deep)] md:text-[56px] lg:text-[68px]">
+                Watch it build itself.
               </h2>
-              <p className="mx-auto mt-7 max-w-xl text-pretty text-[17px] leading-[1.6] text-[color:var(--on-deep-2)] md:text-[18px]">
-                On the demo we&rsquo;ll connect a slice of your data and show
-                you your own processes, already structured and ready to run.
+              <p className="mx-auto mt-6 max-w-xl text-pretty text-[17px] leading-[1.6] text-[color:var(--on-deep-2)] md:text-[18px]">
+                We&rsquo;ll connect a slice of your data and show you your own
+                processes, ready to run.
               </p>
               <div className="mt-10 flex justify-center">
                 <LinkButton
