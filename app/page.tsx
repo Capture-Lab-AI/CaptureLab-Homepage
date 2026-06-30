@@ -4,7 +4,6 @@ import { Hero } from "@/components/landing/hero";
 import { Backed } from "@/components/landing/backed";
 import { Audience } from "@/components/landing/audience";
 import { HowItWorks } from "@/components/landing/how-it-works";
-import { Capabilities } from "@/components/landing/capabilities";
 import { Integrations } from "@/components/landing/integrations";
 import { Trust } from "@/components/landing/trust";
 import { Pilot } from "@/components/landing/pilot";
@@ -20,7 +19,6 @@ export default function Home() {
         <Backed />
         <Audience />
         <HowItWorks />
-        <Capabilities />
         <Integrations />
         <Trust />
         <Pilot />
