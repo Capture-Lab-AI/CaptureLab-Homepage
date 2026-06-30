@@ -13,9 +13,9 @@ export function FinalCTA() {
             <div className="mx-auto max-w-3xl text-center">
               <p className="eyebrow text-accent">See it on your stack</p>
               <h2 className="font-display mt-6 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.02em] text-[color:var(--on-deep)] md:text-[56px] lg:text-[68px]">
-                Stop instructing AI.{" "}
+                Capture the knowledge,{" "}
                 <span className="block">
-                  Let it <em className="italic">learn</em> your business.
+                  run the <em className="italic">work</em>.
                 </span>
               </h2>
               <p className="mx-auto mt-7 max-w-xl text-pretty text-[17px] leading-[1.6] text-[color:var(--on-deep-2)] md:text-[18px]">

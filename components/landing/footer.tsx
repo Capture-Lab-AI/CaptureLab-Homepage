@@ -1,19 +1,10 @@
 import Link from "next/link";
-import { Reveal } from "./motion";
 import { Year } from "./year";
 
 export function Footer() {
   return (
     <footer className="overflow-hidden bg-bg-deep">
       <div className="mx-auto max-w-content px-6">
-        {/* Closing statement */}
-        <Reveal>
-          <p className="font-display max-w-3xl py-20 text-balance text-[30px] font-normal leading-[1.12] tracking-[-0.02em] text-[color:var(--on-deep)] md:py-28 md:text-[44px] lg:text-[52px]">
-            Capture the knowledge.{" "}
-            <span className="text-[color:var(--on-deep-3)]">Run the work.</span>
-          </p>
-        </Reveal>
-
         {/* Footer row */}
         <div className="flex flex-col items-start justify-between gap-6 border-t border-[color:var(--on-deep-rule)] py-10 md:flex-row md:items-center md:py-12">
           <div className="flex items-center gap-4">
@@ -84,13 +75,6 @@ export function Footer() {
             © <Year /> Capture Lab
           </p>
         </div>
-      </div>
-
-      {/* Oversized closing wordmark */}
-      <div aria-hidden className="select-none px-6 pb-6">
-        <p className="font-display whitespace-nowrap text-[color:var(--on-deep)] opacity-[0.06] text-[22vw] font-medium leading-[0.8] tracking-[-0.04em]">
-          Capture Lab
-        </p>
       </div>
     </footer>
   );

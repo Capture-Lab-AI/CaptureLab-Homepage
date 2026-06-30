@@ -4,9 +4,9 @@ import { Hero } from "@/components/landing/hero";
 import { Backed } from "@/components/landing/backed";
 import { Audience } from "@/components/landing/audience";
 import { HowItWorks } from "@/components/landing/how-it-works";
+import { Outcomes } from "@/components/landing/outcomes";
 import { Integrations } from "@/components/landing/integrations";
 import { Trust } from "@/components/landing/trust";
-import { Pilot } from "@/components/landing/pilot";
 import { FinalCTA } from "@/components/landing/final-cta";
 import { Footer } from "@/components/landing/footer";
 
@@ -19,9 +19,9 @@ export default function Home() {
         <Backed />
         <Audience />
         <HowItWorks />
+        <Outcomes />
         <Integrations />
         <Trust />
-        <Pilot />
         <FinalCTA />
         <Footer />
       </main>
