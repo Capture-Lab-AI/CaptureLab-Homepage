@@ -2,7 +2,7 @@ import { MotionProvider } from "@/components/landing/motion-provider";
 import { Nav } from "@/components/landing/nav";
 import { Hero } from "@/components/landing/hero";
 import { Backed } from "@/components/landing/backed";
-import { Problem } from "@/components/landing/problem";
+import { Audience } from "@/components/landing/audience";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { Capabilities } from "@/components/landing/capabilities";
 import { Integrations } from "@/components/landing/integrations";
@@ -18,7 +18,7 @@ export default function Home() {
         <Nav />
         <Hero />
         <Backed />
-        <Problem />
+        <Audience />
         <HowItWorks />
         <Capabilities />
         <Integrations />

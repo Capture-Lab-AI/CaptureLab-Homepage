@@ -4,7 +4,7 @@ const features = [
   {
     num: "01",
     title: "Self-building automations",
-    body: "You don't script the automation. Capture Lab maps each process from your data and builds the steps an agent can run — then keeps them in sync as the way you work changes.",
+    body: "You don't script the automation. Capture Lab maps each process from your data and builds the steps an agent can run, then keeps them in sync as the way you work changes.",
   },
   {
     num: "02",
@@ -14,7 +14,7 @@ const features = [
   {
     num: "03",
     title: "Learns your institutional knowledge",
-    body: "The fixes buried in tickets, threads, and senior engineers' heads become shared, executable knowledge — not tribal memory that walks out the door.",
+    body: "The fixes buried in tickets, threads, and senior engineers' heads become shared, executable knowledge, not tribal memory that walks out the door.",
   },
   {
     num: "04",

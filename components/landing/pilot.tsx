@@ -12,7 +12,7 @@ const week = [
   {
     day: "Day 3",
     t: "See your process map",
-    d: "How work actually runs today — surfaced, not assumed.",
+    d: "How work actually runs today: surfaced, not assumed.",
   },
   {
     day: "Day 7",
@@ -34,7 +34,7 @@ export function Pilot() {
               </h2>
               <p className="mt-7 max-w-prose text-[17px] leading-[1.6] text-ink-2 md:text-[18px]">
                 Start with a cut of your data. In a week, we&rsquo;ll show you a
-                clear view of how your work runs today — and run the first
+                clear view of how your work runs today, and run the first
                 process for you.
               </p>
               <div className="mt-9">

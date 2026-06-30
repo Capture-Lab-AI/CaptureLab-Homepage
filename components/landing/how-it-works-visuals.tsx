@@ -136,7 +136,7 @@ export function BuildVisual() {
 /* 03 — RUN: an agent executing a process, with human approval. */
 const runSteps = [
   { t: "Identity verified", time: "0.4s", done: true },
-  { t: "Group policy checked — SSO-Eng", time: "0.9s", done: true },
+  { t: "Group policy checked: SSO-Eng", time: "0.9s", done: true },
   { t: "Access grant drafted", time: "1.2s", done: true },
   { t: "Awaiting human approval", time: "now", done: false },
 ];
