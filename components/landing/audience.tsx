@@ -1,19 +1,15 @@
-import { Landmark, Stethoscope, Building2 } from "lucide-react";
 import { Reveal, Stagger, Item } from "./motion";
 
 const segments = [
   {
-    Icon: Landmark,
     title: "Financial services & insurance",
     body: "Banks, insurers, and capital markets firms where every entitlement and approval is examined by regulators.",
   },
   {
-    Icon: Stethoscope,
     title: "Healthcare",
     body: "Hospitals, payers, and health systems balancing clinician access to patient data against HIPAA and least-privilege rules.",
   },
   {
-    Icon: Building2,
     title: "Government & public sector",
     body: "Agencies and public institutions managing clearances, role changes, and access that has to survive an audit.",
   },
@@ -41,7 +37,7 @@ export function Audience() {
           {segments.map((s) => (
             <Item key={s.title}>
               <div className="h-full rounded-2xl border border-rule bg-bg-elev p-6 md:p-8">
-                <s.Icon className="h-6 w-6 text-accent" strokeWidth={1.75} />
+                <span className="block h-px w-8 bg-accent" aria-hidden />
                 <h3 className="font-display mt-5 text-[20px] font-normal leading-[1.2] tracking-[-0.01em] text-ink md:text-[22px]">
                   {s.title}
                 </h3>
