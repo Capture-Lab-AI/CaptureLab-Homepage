@@ -7,17 +7,17 @@ const backers = [
   {
     name: "Carnegie Mellon University",
     src: "/logos/cmu-wordmark.svg",
-    className: "h-6 md:h-7",
+    className: "h-9 md:h-11",
   },
   {
     name: "Harvard University",
     src: "/logos/harvard.svg",
-    className: "h-10 md:h-12",
+    className: "h-14 md:h-16",
   },
   {
     name: "Pear VC (PearX)",
     src: "/logos/pearvc.png",
-    className: "h-9 md:h-11",
+    className: "h-12 md:h-14",
   },
 ];
 
@@ -36,7 +36,7 @@ export function Backed() {
                 <img
                   src={b.src}
                   alt={b.name}
-                  className={`${b.className} w-auto object-contain opacity-60 grayscale transition duration-300 ease-out hover:opacity-100 hover:grayscale-0`}
+                  className={`${b.className} w-auto object-contain opacity-90 transition duration-300 ease-out hover:opacity-100`}
                 />
               </li>
             ))}

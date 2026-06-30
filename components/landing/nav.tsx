@@ -8,8 +8,8 @@ import { LinkButton, CtaDot } from "@/components/ui/button";
 const CALENDLY = "https://calendly.com/matthew-capture-lab/30min";
 
 const tabs = [
+  { href: "#who-we-serve", label: "Who we serve" },
   { href: "#how-it-works", label: "How it works" },
-  { href: "#platform", label: "Platform" },
   { href: "#integrations", label: "Integrations" },
   { href: "#security", label: "Security" },
 ];

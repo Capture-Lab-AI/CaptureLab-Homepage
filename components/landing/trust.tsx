@@ -9,14 +9,14 @@ const columns = [
       "Every answer is grounded in a source you can open",
       "A full audit trail of every action an agent takes",
       "Human approval on any step you choose to gate",
-      "Reversible by design — undo a run, not just regret it",
+      "Reversible by design: undo a run, not just regret it",
     ],
   },
   {
     eyebrow: "Security",
     title: "Your data stays yours.",
     points: [
-      "Scoped to your tenant — your data isn't pooled",
+      "Scoped to your tenant, so your data isn't pooled",
       "Least-privilege access, per integration, revocable anytime",
       "Never used to train shared or third-party models",
       "Encrypted in transit and at rest",

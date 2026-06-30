@@ -20,7 +20,7 @@ export function FinalCTA() {
               </h2>
               <p className="mx-auto mt-7 max-w-xl text-pretty text-[17px] leading-[1.6] text-[color:var(--on-deep-2)] md:text-[18px]">
                 On the demo we&rsquo;ll connect a slice of your data and show
-                you your own processes — already structured, ready to run.
+                you your own processes, already structured and ready to run.
               </p>
               <div className="mt-10 flex justify-center">
                 <LinkButton
