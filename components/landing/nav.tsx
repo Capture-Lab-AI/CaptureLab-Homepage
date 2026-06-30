@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { LinkButton, CtaDot } from "@/components/ui/button";
-
-const CALENDLY = "https://calendly.com/matthew-capture-lab/30min";
+import { LinkButton } from "@/components/ui/button";
 
 const tabs = [
   { href: "#who-we-serve", label: "Who we serve" },
@@ -64,15 +62,6 @@ export function Nav() {
           >
             Sign in
           </a>
-          <LinkButton
-            href={CALENDLY}
-            target="_blank"
-            rel="noopener noreferrer"
-            size="md"
-          >
-            <CtaDot />
-            Book a demo
-          </LinkButton>
         </div>
 
         <button
@@ -105,19 +94,10 @@ export function Nav() {
             ))}
             <div className="mt-4 flex items-center gap-3">
               <LinkButton
-                href={CALENDLY}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="md"
-                className="flex-1"
-              >
-                <CtaDot />
-                Book a demo
-              </LinkButton>
-              <LinkButton
                 href="https://app.capture-lab.com/"
                 variant="outline"
                 size="md"
+                className="flex-1"
               >
                 Sign in
               </LinkButton>

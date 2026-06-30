@@ -18,9 +18,19 @@ const rowB = [
 ];
 
 function Chip({ name }: { name: string }) {
+  const slug = name.toLowerCase();
   return (
-    <span className="flex shrink-0 items-center gap-2.5 rounded-xl border border-[color:var(--on-deep-rule)] bg-[rgba(246,242,238,0.03)] px-5 py-3 text-[15px] text-[color:var(--on-deep)]">
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+    <span className="flex shrink-0 items-center gap-3 rounded-xl border border-[color:var(--on-deep-rule)] bg-[rgba(246,242,238,0.03)] py-2.5 pl-2.5 pr-5 text-[15px] text-[color:var(--on-deep)]">
+      <span className="flex h-7 w-7 items-center justify-center rounded-md bg-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/logos/integrations/${slug}.svg`}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="h-[18px] w-[18px] object-contain"
+        />
+      </span>
       {name}
     </span>
   );
