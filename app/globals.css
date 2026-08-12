@@ -234,6 +234,32 @@
   }
 }
 
+/* Findings ticker. The track holds two copies of the feed; translating half
+   its width loops seamlessly. Hover pauses it so a line can be read. */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-x 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 /* Paper grain over the whole viewport — felt, never seen. */
 .grain::after {
   content: "";
