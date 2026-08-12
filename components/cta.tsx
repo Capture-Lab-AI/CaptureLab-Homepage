@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { MeshGradient } from "@paper-design/shaders-react";
+import { useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Magnetic } from "./magnetic";
@@ -12,21 +13,22 @@ export function Cta() {
   return (
     <section
       id="demo"
-      className="hero-wash relative scroll-mt-16 overflow-hidden border-t border-border"
+      className="relative scroll-mt-16 overflow-hidden border-t border-border"
     >
-      {/* a slow warm breath behind the closing line */}
-      {!reduce && (
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-24 size-[520px] -translate-x-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgb(218 98 125 / 0.09), transparent 65%)",
-          }}
-          animate={{ scale: [1, 1.18, 1], opacity: [0.7, 1, 0.7] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      {/* slow espresso-and-rose weather behind the close */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-60">
+        <MeshGradient
+          colors={["#1a1410", "#450920", "#a53860", "#24201c"]}
+          distortion={0.8}
+          swirl={0.2}
+          speed={reduce ? 0 : 0.25}
+          style={{ width: "100%", height: "100%" }}
         />
-      )}
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/70 via-background/35 to-background/80"
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-28 lg:pt-36">
         <div className="text-center">

@@ -1,6 +1,8 @@
 "use client";
 
 import * as Scrollytelling from "@bsmnt/scrollytelling";
+import { GrainGradient } from "@paper-design/shaders-react";
+import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Glow } from "./glow";
 import { Scramble } from "./scramble";
@@ -10,18 +12,24 @@ const PHASES = [
     number: "01",
     name: "Waste",
     body: "Week one, off your billing APIs: retry storms, abandoned seats, dead scheduled jobs, unopened output. Immediate and unarguable. It pays for the engagement.",
+    stat: "$151k surfaced in week one",
+    colors: ["#b57546", "#584b3a", "#e6dfd3"],
     emphasized: false,
   },
   {
     number: "02",
     name: "Reallocation",
     body: "The story isn't cutting. The money is in the wrong places. Every deployment ranked by cost per successful outcome, so budget moves from the 0.3× to the 9×.",
+    stat: "$795k worth redeploying",
+    colors: ["#da627d", "#a53860", "#450920"],
     emphasized: true,
   },
   {
     number: "03",
     name: "Propagation",
     body: "Somewhere in your org a team has already figured it out. We isolate what winners do differently, package it, and verify it replicates.",
+    stat: "one winner, four teams",
+    colors: ["#d2c4a5", "#7a6b56", "#ffa5ab"],
     emphasized: false,
   },
 ];
@@ -33,6 +41,7 @@ const PHASES = [
  */
 export function Turn() {
   const [pinned, setPinned] = useState(false);
+  const reduce = useReducedMotion();
   const lineRef = useRef<HTMLDivElement>(null);
   const cardRefs = [
     useRef<HTMLDivElement>(null),
@@ -72,30 +81,41 @@ export function Turn() {
           <div key={phase.name} ref={cardRefs[i]} className="h-full">
             <Glow className="h-full rounded-xl">
               <article
-                className={`surface-sm relative flex h-full flex-col overflow-hidden rounded-xl border bg-card p-7 ${
+                className={`surface-sm relative flex h-full flex-col overflow-hidden rounded-xl border bg-card ${
                   phase.emphasized ? "border-primary/40" : "border-border"
                 }`}
               >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
-                />
-                <div className="flex items-baseline justify-between">
-                  <p className="font-mono text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary">
+                {/* the abstract band: each phase gets its own weather */}
+                <div className="relative h-16 overflow-hidden">
+                  <GrainGradient
+                    colors={phase.colors}
+                    colorBack="#1a1410"
+                    softness={0.7}
+                    intensity={0.4}
+                    noise={0.3}
+                    speed={reduce ? 0 : 0.4}
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                  <span className="absolute left-4 top-3 font-mono text-xs text-white/80">
                     {phase.number}
-                  </p>
+                  </span>
                   {phase.emphasized && (
-                    <span className="rounded-md bg-accent px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-accent-foreground">
+                    <span className="absolute right-3 top-3 rounded-md bg-white/85 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-pink-900">
                       the turn
                     </span>
                   )}
                 </div>
-                <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em]">
-                  {phase.name}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {phase.body}
-                </p>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-xl font-semibold tracking-[-0.02em]">
+                    {phase.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {phase.body}
+                  </p>
+                  <p className="mt-auto pt-4 font-mono text-[11px] text-primary">
+                    {phase.stat}
+                  </p>
+                </div>
               </article>
             </Glow>
           </div>
@@ -123,7 +143,7 @@ export function Turn() {
   return (
     <Scrollytelling.Root start="top top" end="bottom bottom" scrub={0.7}>
       <Section>
-        <Scrollytelling.Pin childHeight="100vh" pinSpacerHeight="300vh">
+        <Scrollytelling.Pin childHeight="100vh" pinSpacerHeight="260vh">
           {body}
         </Scrollytelling.Pin>
         <Scrollytelling.Animation
