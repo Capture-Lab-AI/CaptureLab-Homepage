@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useScroll, useSpring } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -13,8 +12,6 @@ const LINKS = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -31,12 +28,6 @@ export function Nav() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      {/* reading progress — a hairline of brand pink */}
-      <motion.div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-primary"
-        style={{ scaleX: progress }}
-      />
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a
           href="#top"
