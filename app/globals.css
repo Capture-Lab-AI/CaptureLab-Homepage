@@ -340,6 +340,40 @@
   }
 }
 
+/* Marching dashes for diagram connectors. */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.dash-flow {
+  stroke-dasharray: 4 6;
+  animation: dash-flow 1.4s linear infinite;
+}
+
+/* Gentle float for diagram props. */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(-3px) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(3px) rotate(var(--float-rotate, 0deg));
+  }
+}
+
+.float-y {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-flow,
+  .float-y {
+    animation: none;
+  }
+}
+
 /* Findings ticker. The track holds two copies of the feed; translating half
    its width loops seamlessly. Hover pauses it so a line can be read. */
 @keyframes marquee-x {

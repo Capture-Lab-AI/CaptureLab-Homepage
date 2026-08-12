@@ -82,7 +82,7 @@ export function Instrument() {
       <div className="mx-auto max-w-6xl border-t border-border px-6 py-24 lg:py-28">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-            <Scramble text="04 · The instrument" />
+            <Scramble text="05 · The instrument" />
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
             Cost per{" "}
