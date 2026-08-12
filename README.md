@@ -1,35 +1,38 @@
-# Pipeline — Marketing Homepage
+# Capture Lab homepage
 
-The marketing site for **Pipeline**, an AI prospecting platform for commercial real estate brokerages.
+The marketing homepage served at [capture-lab.com](https://capture-lab.com).
+
+One page, built around the positioning: *enterprises can tell you to the dollar
+what AI costs them — almost none can tell you what any of it is worth.* The
+category is **AI portfolio management** (never "cost management", "observability",
+"governance", or "ROI platform"), the metric is **cost per successful outcome**,
+and the pitch runs waste → reallocation → propagation, in that order.
+
+## Theme
+
+Ported from `Capture-Lab-AI/Agent-ROI` (itself ported from `prospecting-app`) so
+the site and the products read as one company: the sand/umber/pink ramps, the
+five-face type system (Libre Caslon Condensed headlines, Inter body, Urbanist
+figures), warm elevation, and paper grain. The one divergence: the page commits
+to the espresso ground at `:root` and flips individual sections to sand via
+`.theme-light`, because a marketing page chooses its look per-section rather
+than per-OS.
 
 ## Stack
 
-Next.js 14 (App Router) · TypeScript · Tailwind CSS · `lucide-react` · Fraunces + Inter + JetBrains Mono via `next/font`.
-
-## Run locally
+Next.js (App Router) · TypeScript · Tailwind v4 (CSS-first, no config file) ·
+[motion](https://motion.dev) for animation. Animations respect
+`prefers-reduced-motion`.
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:3000
+npm run build      # must pass before deploying
+npm run typecheck
 ```
 
-Open <http://localhost:3000>.
+## Deploy
 
-## Where copy lives
-
-All section copy is hard-coded in the corresponding component file under `components/landing/`:
-
-- `hero.tsx`, `one-liner.tsx`, `problem.tsx`, `pillars.tsx`, `signals.tsx`, `audiences.tsx`, `differentiators.tsx`, `social-proof.tsx`, `final-cta.tsx`, `footer.tsx`, `nav.tsx`.
-
-Section composition order is in `app/page.tsx`.
-
-## Design tokens
-
-All color and typography tokens are defined as CSS variables in `app/globals.css` and exposed to Tailwind via `tailwind.config.ts`. Adjust there to re-skin globally.
-
-## Replace before launch
-
-- `components/landing/social-proof.tsx` — real brokerage logos, real testimonial quote/attribution, real stats
-- `components/landing/final-cta.tsx`, `components/landing/hero.tsx`, `components/landing/nav.tsx` — wire "Book a demo" buttons to a real Calendly / form / mailto URL (currently anchor `#cta`)
-- `app/layout.tsx` — replace OG image (`/og.png`) with a real 1200×630 asset
-- `public/favicon.ico` — replace with a real favicon
+Vercel, project `capturelab-homepage` on the Capture Lab team. DNS lives in AWS
+Route53 (`capture-lab.com` hosted zone): the apex A record points at Vercel
+(`76.76.21.21`) and `www` CNAMEs to `cname.vercel-dns.com`.
