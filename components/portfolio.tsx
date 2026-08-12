@@ -1,5 +1,6 @@
 "use client";
 
+import NumberFlow from "@number-flow/react";
 import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { Reveal } from "./reveal";
@@ -194,9 +195,19 @@ export function Portfolio() {
                           positive ? "text-positive" : "text-negative"
                         }`}
                       >
-                        {mode === "return"
-                          ? `${row.mult.toFixed(1)}×`
-                          : `$${row.spendQ}k`}
+                        <NumberFlow
+                          value={mode === "return" ? row.mult : row.spendQ}
+                          format={
+                            mode === "return"
+                              ? {
+                                  minimumFractionDigits: 1,
+                                  maximumFractionDigits: 1,
+                                }
+                              : { maximumFractionDigits: 0 }
+                          }
+                          prefix={mode === "spend" ? "$" : undefined}
+                          suffix={mode === "return" ? "×" : "k"}
+                        />
                       </p>
                     </div>
                   );
@@ -212,7 +223,7 @@ export function Portfolio() {
                         <span className="font-numeric tabular font-semibold text-foreground">
                           $340k
                         </span>{" "}
-                        of quarterly spend sits below 1× — flagged for
+                        of quarterly spend sits below 1×. Flagged for
                         reallocation.
                       </span>
                     </p>
@@ -231,8 +242,8 @@ export function Portfolio() {
                   <p className="flex items-center gap-2.5 text-xs text-muted-foreground">
                     <span className="size-1.5 rounded-full bg-negative" aria-hidden />
                     <span>
-                      The two workflows below 1× are the second- and
-                      third-largest lines of spend —{" "}
+                      The two workflows below 1× are the second and third
+                      largest lines of spend:{" "}
                       <span className="font-numeric tabular font-semibold text-foreground">
                         $82k
                       </span>{" "}

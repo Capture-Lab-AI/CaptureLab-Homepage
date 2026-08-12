@@ -41,8 +41,8 @@ export function Cta() {
               </em>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-              A thirty-minute walk-through of the method — on your numbers, not
-              ours. First findings land in week one, off your billing APIs.
+              A thirty-minute walk-through of the method, on your numbers.
+              First findings land in week one.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

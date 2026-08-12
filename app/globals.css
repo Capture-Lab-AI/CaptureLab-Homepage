@@ -14,7 +14,6 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-display: var(--font-display);
-  --font-heading: var(--font-heading);
   --font-numeric: var(--font-numeric);
 
   /* Pink — the brand, identical in both products. */
@@ -215,6 +214,26 @@
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Faint dot grid for the light sections, so paper reads as drafting stock
+     rather than empty space. Lives on a pseudo-element so the fade masks the
+     dots, never the section itself. */
+  .dotgrid {
+    position: relative;
+  }
+
+  .dotgrid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
   }
 
   /* Light from above — the overhead wash that gives the espresso ground a

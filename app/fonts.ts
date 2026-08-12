@@ -1,4 +1,4 @@
-import { Inter, JetBrains_Mono, Libre_Caslon_Text, Urbanist } from "next/font/google";
+import { Inter, JetBrains_Mono, Urbanist } from "next/font/google";
 import localFont from "next/font/local";
 
 /**
@@ -31,14 +31,6 @@ const libreCaslonCondensed = localFont({
   display: "swap",
 });
 
-/** Editorial serif below the h1 tier. */
-const libreCaslon = Libre_Caslon_Text({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-});
-
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
@@ -53,7 +45,6 @@ const urbanist = Urbanist({
 export const fontVariables = [
   inter.variable,
   libreCaslonCondensed.variable,
-  libreCaslon.variable,
   jetbrainsMono.variable,
   urbanist.variable,
 ].join(" ");

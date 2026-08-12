@@ -135,12 +135,12 @@ export function Hero() {
 
         <h1
           ref={headRef}
-          className="not-display invisible mt-6 max-w-3xl font-sans text-5xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-6xl lg:text-[4.6rem]"
+          className="not-display invisible mt-6 max-w-4xl font-sans text-[2.6rem] font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl lg:text-[3.9rem]"
         >
           <span className="block">You know what AI costs.</span>
           <span className="mt-1 block text-muted-foreground">
             Now know what{" "}
-            <em className="font-display font-normal italic tracking-[-0.01em] text-primary">
+            <em className="whitespace-nowrap font-display font-normal italic tracking-[-0.01em] text-primary">
               it&rsquo;s worth.
             </em>
           </span>
@@ -153,8 +153,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1.0 }}
         >
           Capture Lab measures the cost per successful outcome of every AI
-          workflow in the company — then helps leadership move the money to the
-          ones that are paying off.
+          workflow in the company, then helps leadership move the money to the
+          ones paying off.
         </motion.p>
 
         <motion.div

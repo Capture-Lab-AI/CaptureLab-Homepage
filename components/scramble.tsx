@@ -34,7 +34,7 @@ export function Scramble({
         text
           .split("")
           .map((ch, i) => {
-            if (i < settled || ch === " " || ch === "·" || ch === "—") return ch;
+            if (i < settled || ch === " " || ch === "·") return ch;
             return POOL[Math.floor(Math.random() * POOL.length)];
           })
           .join(""),

@@ -1,3 +1,4 @@
+import { Glow } from "./glow";
 import { Reveal } from "./reveal";
 import { Scramble } from "./scramble";
 import { Tilt } from "./tilt";
@@ -11,7 +12,7 @@ const BUYERS = [
   {
     role: "CFO",
     quote:
-      "Cost per successful outcome, per workflow, auditable — with your assumptions, not our black box.",
+      "Cost per successful outcome, per workflow, auditable. Your assumptions, not our black box.",
   },
   {
     role: "FinOps / Platform",
@@ -29,7 +30,7 @@ export function Buyers() {
   return (
     <section
       id="buyers"
-      className="theme-light scroll-mt-16 bg-background text-foreground"
+      className="theme-light dotgrid scroll-mt-16 bg-background text-foreground"
     >
       <div className="mx-auto max-w-6xl border-t border-border px-6 py-24 lg:py-28">
         <Reveal>
@@ -45,20 +46,16 @@ export function Buyers() {
           {BUYERS.map((buyer, i) => (
             <Reveal key={buyer.role} delay={0.08 + i * 0.08} className="h-full">
               <Tilt max={1.8} className="h-full">
-                <figure className="surface-sm lift group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-7">
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -top-3 right-4 font-heading text-8xl italic leading-none text-primary/10 transition-all duration-500 group-hover:text-primary/25"
-                  >
-                    &rdquo;
-                  </span>
-                  <blockquote className="relative font-heading text-lg leading-relaxed">
-                    &ldquo;{buyer.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover:text-primary">
-                    {buyer.role}
-                  </figcaption>
-                </figure>
+                <Glow className="h-full rounded-xl">
+                  <figure className="surface-sm flex h-full flex-col justify-between rounded-xl border border-border bg-card p-7">
+                    <blockquote className="text-lg font-medium leading-relaxed tracking-[-0.01em]">
+                      &ldquo;{buyer.quote}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover:text-primary">
+                      {buyer.role}
+                    </figcaption>
+                  </figure>
+                </Glow>
               </Tilt>
             </Reveal>
           ))}

@@ -1,11 +1,11 @@
 const FINDINGS: { text: string; tone: "pos" | "neg" }[] = [
-  { text: "retry storm · prod key eng-04 — $18,240/qtr", tone: "neg" },
-  { text: "41 Copilot seats idle 90d — $73,800/yr", tone: "neg" },
-  { text: "contract-review rate-limited since Mar — 9.2× held back", tone: "pos" },
-  { text: "batch-eligible: nightly summarization — −52% unit cost", tone: "pos" },
-  { text: "broken prompt cache · support-triage — $9,120/qtr", tone: "neg" },
-  { text: "holdout complete: claims intake — +31% throughput", tone: "pos" },
-  { text: "shadow AI on expense cards: 7 tools — $31,400/yr", tone: "neg" },
+  { text: "retry storm · prod key eng-04 · $18,240/qtr", tone: "neg" },
+  { text: "41 Copilot seats idle 90d · $73,800/yr", tone: "neg" },
+  { text: "contract-review rate-limited since Mar · 9.2× held back", tone: "pos" },
+  { text: "batch-eligible: nightly summarization · −52% unit cost", tone: "pos" },
+  { text: "broken prompt cache · support-triage · $9,120/qtr", tone: "neg" },
+  { text: "holdout complete: claims intake · +31% throughput", tone: "pos" },
+  { text: "shadow AI on expense cards: 7 tools · $31,400/yr", tone: "neg" },
   { text: "winner packaged: eng review agent → 4 teams", tone: "pos" },
 ];
 

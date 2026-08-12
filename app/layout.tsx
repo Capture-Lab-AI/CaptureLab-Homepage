@@ -5,9 +5,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://capture-lab.com"),
-  title: "Capture Lab — You know what AI costs. Now know what it's worth.",
+  title: "Capture Lab · You know what AI costs. Now know what it's worth.",
   description:
-    "Portfolio management for enterprise AI. Capture Lab measures the cost per successful outcome of every AI workflow in the company, then helps leadership move the money to the ones that are paying off.",
+    "Portfolio management for enterprise AI. Capture Lab measures the cost per successful outcome of every AI workflow in the company, then helps leadership move the money to the ones paying off.",
   openGraph: {
     title: "Capture Lab",
     description:
