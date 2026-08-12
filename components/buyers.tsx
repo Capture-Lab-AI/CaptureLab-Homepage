@@ -1,4 +1,5 @@
 import { Reveal } from "./reveal";
+import { Scramble } from "./scramble";
 import { Tilt } from "./tilt";
 
 const BUYERS = [
@@ -33,7 +34,7 @@ export function Buyers() {
       <div className="mx-auto max-w-6xl border-t border-border px-6 py-24 lg:py-28">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-            05 · Who it&rsquo;s for
+            <Scramble text="05 · Who it's for" />
           </p>
           <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
             Built for the people who answer for the budget.

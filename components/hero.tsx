@@ -1,5 +1,8 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 import {
   motion,
   useMotionTemplate,
@@ -9,17 +12,23 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef } from "react";
 import { Magnetic } from "./magnetic";
+import { Scramble } from "./scramble";
 import { Ticker } from "./ticker";
 
-const LINE_ONE = ["You", "know", "what", "AI", "costs."];
-const LINE_TWO = ["Now", "know", "what"];
+gsap.registerPlugin(SplitText, useGSAP);
+
+const Dust = dynamic(() => import("./dust").then((m) => m.Dust), {
+  ssr: false,
+});
 
 export function Hero() {
   const reduce = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const headRef = useRef<HTMLHeadingElement>(null);
 
   // parallax: the room recedes slower than the page scrolls away
   const { scrollYProgress } = useScroll({
@@ -35,6 +44,30 @@ export function Hero() {
   const smx = useSpring(mx, { stiffness: 120, damping: 25 });
   const smy = useSpring(my, { stiffness: 120, damping: 25 });
   const spotlight = useMotionTemplate`radial-gradient(560px circle at ${smx}px ${smy}px, rgb(255 186 138 / 0.07), transparent 65%)`;
+
+  // the headline rises out of per-word masks, character by character
+  useGSAP(
+    () => {
+      if (!headRef.current) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(headRef.current, { autoAlpha: 1 });
+        return;
+      }
+      const split = SplitText.create(headRef.current, {
+        type: "words,chars",
+        mask: "words",
+      });
+      gsap.set(headRef.current, { autoAlpha: 1 });
+      gsap.from(split.chars, {
+        yPercent: 118,
+        stagger: 0.016,
+        duration: 1.05,
+        ease: "power4.out",
+        delay: 0.3,
+      });
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -77,6 +110,10 @@ export function Hero() {
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-background to-transparent"
       />
+
+      {/* dust in the lamplight */}
+      <Dust />
+
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -93,28 +130,19 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          Portfolio management for enterprise AI
+          <Scramble text="Portfolio management for enterprise AI" />
         </motion.p>
 
-        <h1 className="not-display mt-6 max-w-3xl font-sans text-5xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-6xl lg:text-[4.6rem]">
-          <span className="block">
-            {LINE_ONE.map((word, i) => (
-              <Word key={word + i} index={i}>
-                {word}
-              </Word>
-            ))}
-          </span>
+        <h1
+          ref={headRef}
+          className="not-display invisible mt-6 max-w-3xl font-sans text-5xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-6xl lg:text-[4.6rem]"
+        >
+          <span className="block">You know what AI costs.</span>
           <span className="mt-1 block text-muted-foreground">
-            {LINE_TWO.map((word, i) => (
-              <Word key={word + i} index={LINE_ONE.length + i}>
-                {word}
-              </Word>
-            ))}
-            <Word index={LINE_ONE.length + LINE_TWO.length}>
-              <em className="font-display font-normal italic tracking-[-0.01em] text-primary">
-                it&rsquo;s worth.
-              </em>
-            </Word>
+            Now know what{" "}
+            <em className="font-display font-normal italic tracking-[-0.01em] text-primary">
+              it&rsquo;s worth.
+            </em>
           </span>
         </h1>
 
@@ -122,7 +150,7 @@ export function Hero() {
           className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
         >
           Capture Lab measures the cost per successful outcome of every AI
           workflow in the company — then helps leadership move the money to the
@@ -133,12 +161,12 @@ export function Hero() {
           className="mt-9 flex flex-wrap items-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.05 }}
+          transition={{ duration: 0.8, delay: 1.15 }}
         >
           <Magnetic>
             <a
               href="#demo"
-              className="group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+              className="sheen group inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
             >
               Book a demo
               <span
@@ -167,7 +195,7 @@ export function Hero() {
           className="mt-7 font-mono text-[11px] text-muted-foreground"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
         >
           first findings in week one · billing APIs only · no instrumentation
           project
@@ -179,32 +207,10 @@ export function Hero() {
         className="relative"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 1.35 }}
+        transition={{ duration: 0.9, delay: 1.45 }}
       >
         <Ticker />
       </motion.div>
     </section>
-  );
-}
-
-function Word({ children, index }: { children: React.ReactNode; index: number }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.span
-      className="inline-block whitespace-pre"
-      initial={
-        reduce
-          ? { opacity: 0 }
-          : { opacity: 0, y: 22, filter: "blur(6px)" }
-      }
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{
-        duration: 0.7,
-        delay: 0.25 + index * 0.07,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
-      {children}{" "}
-    </motion.span>
   );
 }

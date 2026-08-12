@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
 import { Reveal } from "./reveal";
+import { Scramble } from "./scramble";
 import { Tilt } from "./tilt";
 
 type Mode = "return" | "spend";
@@ -73,7 +74,7 @@ export function Portfolio() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-                01 · The portfolio view
+                <Scramble text="01 · The portfolio view" />
               </p>
               <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
                 Every workflow, priced by what it returns.
@@ -115,7 +116,7 @@ export function Portfolio() {
 
         <Reveal delay={0.12}>
           <Tilt max={1.6} className="mt-10">
-            <div className="surface rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <div className="border-beam surface rounded-2xl border border-border bg-card p-6 sm:p-8">
               <div className="flex items-baseline justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                   {mode === "return"

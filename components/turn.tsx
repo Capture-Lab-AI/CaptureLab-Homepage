@@ -1,7 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { Reveal } from "./reveal";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { Scramble } from "./scramble";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const PHASES = [
   {
@@ -27,19 +32,80 @@ const PHASES = [
   },
 ];
 
-/** The pitch sequence — always in this order, never reversed. */
+/**
+ * The pitch sequence — always in this order, never reversed. On desktop the
+ * section pins and the three phases land one at a time as the reader scrolls
+ * through it: the order is the argument, so the scroll enforces it.
+ */
 export function Turn() {
-  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray<HTMLElement>("[data-phase]");
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.set(cards, { yPercent: 26, autoAlpha: 0 });
+          gsap.set("[data-closing]", { autoAlpha: 0 });
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "+=1250",
+              pin: true,
+              scrub: 0.55,
+            },
+          });
+          tl.from("[data-seq-line]", {
+            scaleX: 0,
+            transformOrigin: "0% 50%",
+            duration: 0.7,
+          })
+            .to(cards[0], { yPercent: 0, autoAlpha: 1, duration: 1 }, 0.25)
+            .to(cards[1], { yPercent: 0, autoAlpha: 1, duration: 1 }, 0.95)
+            .to(cards[2], { yPercent: 0, autoAlpha: 1, duration: 1 }, 1.65)
+            .to("[data-closing]", { autoAlpha: 1, duration: 0.6 }, 2.5)
+            .to({}, { duration: 0.35 });
+        },
+      );
+
+      mm.add(
+        "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.from("[data-seq-line]", {
+            scaleX: 0,
+            transformOrigin: "0% 50%",
+            duration: 1,
+            scrollTrigger: { trigger: "[data-seq-line]", start: "top 88%" },
+          });
+          for (const card of cards) {
+            gsap.from(card, {
+              y: 44,
+              autoAlpha: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: { trigger: card, start: "top 88%" },
+            });
+          }
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
+      ref={sectionRef}
       id="method"
       className="theme-light scroll-mt-16 bg-background text-foreground"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 lg:py-28">
-        <Reveal>
+      <div className="mx-auto flex min-h-[calc(100vh-0px)] max-w-6xl flex-col justify-center px-6 py-24">
+        <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-            03 · The method
+            <Scramble text="03 · The method" />
           </p>
           <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
             Waste buys credibility.{" "}
@@ -48,65 +114,60 @@ export function Turn() {
             </em>{" "}
             is the story.
           </h2>
-        </Reveal>
+        </div>
 
-        {/* the sequence line — draws left to right as the section arrives */}
-        <motion.div
+        {/* the sequence line — draws left to right as the scroll advances */}
+        <div
+          data-seq-line
           aria-hidden
-          className="mt-12 h-px origin-left bg-gradient-to-r from-primary via-primary/40 to-transparent"
-          initial={reduce ? { opacity: 0 } : { scaleX: 0 }}
-          whileInView={reduce ? { opacity: 1 } : { scaleX: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 h-px bg-gradient-to-r from-primary via-primary/40 to-transparent"
         />
 
         <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {PHASES.map((phase, i) => (
-            <Reveal key={phase.name} delay={0.1 + i * 0.12} className="h-full">
-              <article
-                className={`surface-sm lift group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card p-7 ${
-                  phase.emphasized
-                    ? "border-primary/40 md:-translate-y-2"
-                    : "border-border"
-                }`}
-              >
-                {/* hover: the top edge takes the brand */}
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
-                />
-                <div className="flex items-baseline justify-between">
-                  <p className="font-mono text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary">
-                    {phase.number}
-                  </p>
-                  {phase.emphasized && (
-                    <span className="rounded-md bg-accent px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-accent-foreground">
-                      the turn
-                    </span>
-                  )}
-                </div>
-                <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em]">
-                  {phase.name}
-                </h3>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                  {phase.kicker}
+          {PHASES.map((phase) => (
+            <article
+              key={phase.name}
+              data-phase
+              className={`surface-sm lift group relative flex h-full flex-col overflow-hidden rounded-xl border bg-card p-7 ${
+                phase.emphasized ? "border-primary/40" : "border-border"
+              }`}
+            >
+              <span
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
+              />
+              <div className="flex items-baseline justify-between">
+                <p className="font-mono text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary">
+                  {phase.number}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  {phase.body}
-                </p>
-              </article>
-            </Reveal>
+                {phase.emphasized && (
+                  <span className="rounded-md bg-accent px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-accent-foreground">
+                    the turn
+                  </span>
+                )}
+              </div>
+              <h3 className="mt-5 text-xl font-semibold tracking-[-0.02em]">
+                {phase.name}
+              </h3>
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                {phase.kicker}
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                {phase.body}
+              </p>
+            </article>
           ))}
         </div>
 
-        <Reveal delay={0.45}>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Lead with the vision and you sound speculative. Stop at waste and
-            you&rsquo;re a cost tool. The turn in the middle is the whole
-            positioning — and the reason this is priced as ongoing management,
-            not a one-time audit.
-          </p>
-        </Reveal>
+        <p
+          data-closing
+          className="mt-10 max-w-2xl text-sm leading-relaxed text-muted-foreground"
+        >
+          Lead with the vision and you sound speculative. Stop at waste and
+          you&rsquo;re a cost tool. The turn in the middle is the whole
+          positioning — and the reason this is priced as ongoing management,
+          not a one-time audit.
+        </p>
       </div>
     </section>
   );

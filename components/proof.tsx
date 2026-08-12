@@ -1,5 +1,6 @@
 import { CountUp } from "./count-up";
 import { Reveal } from "./reveal";
+import { Scramble } from "./scramble";
 
 /**
  * The proof line: two numbers, one sentence, both halves of the product.
@@ -13,7 +14,7 @@ export function Proof() {
       <div className="mx-auto max-w-6xl px-6 py-24 lg:py-28">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
-            02 · A finding, not a feature
+            <Scramble text="02 · A finding, not a feature" />
           </p>
         </Reveal>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { fontVariables } from "./fonts";
 import "./globals.css";
 
@@ -22,7 +23,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${fontVariables} antialiased`}>
-      <body className="grain">{children}</body>
+      <body className="grain">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

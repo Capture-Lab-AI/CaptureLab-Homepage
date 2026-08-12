@@ -50,7 +50,7 @@ export function Cta() {
               <Magnetic strength={0.35}>
                 <a
                   href="mailto:admin@capture-lab.com?subject=Capture%20Lab%20demo"
-                  className="group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
+                  className="sheen group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg transition hover:brightness-110"
                 >
                   Book a demo
                   <span
