@@ -31,7 +31,7 @@ export function HowItWorks() {
       id="how"
       className="theme-light scroll-mt-16 bg-background text-foreground"
     >
-      <div className="mx-auto max-w-6xl px-6 py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             <Scramble text="03 · How it works" />
@@ -51,7 +51,7 @@ export function HowItWorks() {
                   {step.diagram}
                 </div>
               </Tilt>
-              <h3 className="mt-5 text-base font-semibold">{step.title}</h3>
+              <h3 className="mt-5 text-lg font-semibold">{step.title}</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
                 {step.body}
               </p>

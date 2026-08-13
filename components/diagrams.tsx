@@ -92,7 +92,7 @@ export function ConnectDiagram() {
   }, [inView]);
 
   return (
-    <div ref={scope} className="relative mx-auto aspect-[7/6] w-full max-w-[360px]">
+    <div ref={scope} className="relative mx-auto aspect-[7/6] w-full max-w-[430px]">
       <svg
         aria-hidden
         viewBox="0 0 360 270"
@@ -124,7 +124,7 @@ export function ConnectDiagram() {
         <div
           key={name}
           data-chip={i}
-          className="absolute left-[3%] flex h-[34px] w-[92px] items-center justify-center rounded-lg bg-white/80 font-mono text-[10px] text-sand-800 shadow-sm"
+          className="absolute left-[3%] flex h-[38px] w-[102px] items-center justify-center rounded-lg bg-white/80 font-mono text-[11px] text-sand-800 shadow-sm"
           style={{ top: `${(WIRE_YS[i] / 270) * 100}%`, translate: "0 -50%" }}
         >
           {name}
@@ -140,20 +140,20 @@ export function ConnectDiagram() {
         className="absolute right-[3%] top-1/2 flex -translate-y-1/2 flex-col items-center gap-1.5 rounded-xl bg-white/90 px-4 py-3 shadow-md"
       >
         <Image src="/icon.png" alt="" width={30} height={30} />
-        <p className="text-[10px] font-semibold tracking-tight text-sand-900">
+        <p className="text-[11px] font-semibold tracking-tight text-sand-900">
           Capture Lab
         </p>
         <div className="flex gap-1">
           {["billed", "seats", "usage"].map((tag) => (
             <span
               key={tag}
-              className="rounded bg-sand-200 px-1 py-0.5 font-mono text-[7px] text-sand-700"
+              className="rounded bg-sand-200 px-1 py-0.5 font-mono text-[8px] text-sand-700"
             >
               {tag}
             </span>
           ))}
         </div>
-        <p className="font-numeric tabular text-[9px] text-sand-700">
+        <p className="font-numeric tabular text-[10px] text-sand-700">
           <NumberFlow
             value={observed}
             format={{
@@ -255,21 +255,21 @@ export function PriceDiagram() {
   return (
     <div
       ref={scope}
-      className="relative mx-auto flex aspect-[7/6] w-full max-w-[360px] items-center justify-center"
+      className="relative mx-auto flex aspect-[7/6] w-full max-w-[430px] items-center justify-center"
     >
       <div
         aria-hidden
-        className="absolute h-[230px] w-[260px] rounded-xl bg-white/45 shadow-sm"
+        className="absolute h-[250px] w-[300px] rounded-xl bg-white/45 shadow-sm"
         style={{ rotate: "4deg" }}
       />
-      <span className="float-y absolute right-[6%] top-[7%] rounded-md bg-white/90 px-2 py-1 font-mono text-[9px] text-positive shadow-sm">
+      <span className="float-y absolute right-[6%] top-[7%] rounded-md bg-white/90 px-2 py-1 font-mono text-[10px] text-positive shadow-sm">
         holdout ✓
       </span>
-      <span className="absolute bottom-[8%] left-[5%] rounded-md bg-white/80 px-2 py-1 font-mono text-[9px] text-sand-700 shadow-sm">
+      <span className="absolute bottom-[8%] left-[5%] rounded-md bg-white/80 px-2 py-1 font-mono text-[10px] text-sand-700 shadow-sm">
         vs pre-AI baseline
       </span>
       <div
-        className="float-y relative w-[260px] overflow-hidden rounded-xl bg-white/95 p-5 shadow-lg"
+        className="float-y relative w-[300px] overflow-hidden rounded-xl bg-white/95 p-5 shadow-lg"
         style={{ "--float-rotate": "-4deg" } as React.CSSProperties}
       >
         <div
@@ -282,17 +282,17 @@ export function PriceDiagram() {
           }}
         />
         <div className="flex items-baseline justify-between">
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-sand-700">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-sand-700">
             Cost per outcome
           </p>
-          <p className="font-numeric tabular text-[9px] text-sand-700">live</p>
+          <p className="font-numeric tabular text-[10px] text-sand-700">live</p>
         </div>
         <div className="mt-3 space-y-2.5">
           {BASE_ROWS.map((row, i) => (
             <div key={row.label}>
               <div className="flex items-baseline justify-between">
-                <p className="text-[11px] text-sand-800">{row.label}</p>
-                <p className="font-numeric tabular text-[11px] font-semibold text-sand-900">
+                <p className="text-[12px] text-sand-800">{row.label}</p>
+                <p className="font-numeric tabular text-[12px] font-semibold text-sand-900">
                   <NumberFlow
                     value={prices[i]}
                     format={{
@@ -318,10 +318,10 @@ export function PriceDiagram() {
           ))}
         </div>
         <div className="mt-3.5 flex items-center justify-between border-t border-sand-200 pt-3">
-          <p className="text-[10px] text-sand-700">contract review</p>
+          <p className="text-[11px] text-sand-700">contract review</p>
           <p
             ref={badgeRef}
-            className="font-numeric tabular text-[13px] font-bold text-positive"
+            className="font-numeric tabular text-[15px] font-bold text-positive"
           >
             9.2&times;
           </p>
@@ -394,15 +394,15 @@ export function MoveDiagram() {
   return (
     <div
       ref={scope}
-      className="relative mx-auto flex aspect-[7/6] w-full max-w-[360px] flex-col items-center justify-center"
+      className="relative mx-auto flex aspect-[7/6] w-full max-w-[430px] flex-col items-center justify-center"
     >
-      <p className="absolute left-[5%] top-[6%] font-mono text-[9px] uppercase tracking-[0.14em] text-sand-700">
+      <p className="absolute left-[5%] top-[6%] font-mono text-[10px] uppercase tracking-[0.14em] text-sand-700">
         action queue · ranked by $
       </p>
-      <p className="absolute right-[5%] top-[6%] font-numeric tabular text-[9px] text-sand-700">
+      <p className="absolute right-[5%] top-[6%] font-numeric tabular text-[10px] text-sand-700">
         $1.2M in play
       </p>
-      <div className="relative h-[190px] w-[280px]">
+      <div className="relative h-[210px] w-[320px]">
         {queue.map((actionIdx, pos) => {
           const action = ACTIONS[actionIdx];
           const front = pos === 0;
@@ -422,21 +422,21 @@ export function MoveDiagram() {
               style={{ zIndex: 3 - pos }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-sand-700">
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-sand-700">
                   {action.tag}
                 </p>
-                <span className="rounded-md bg-pink-50 px-1.5 py-0.5 font-mono text-[9px] text-pink-900">
+                <span className="rounded-md bg-pink-50 px-1.5 py-0.5 font-mono text-[10px] text-pink-900">
                   ranked {action.rank}
                 </span>
               </div>
-              <p className="mt-2 text-[12px] font-semibold text-sand-900">
+              <p className="mt-2 text-[13px] font-semibold text-sand-900">
                 {action.title}
               </p>
               <div className="mt-1 flex items-baseline gap-2">
-                <p className="font-numeric tabular text-[11px] text-positive">
+                <p className="font-numeric tabular text-[12px] text-positive">
                   {action.figure}
                 </p>
-                <p className="font-numeric tabular text-[9px] text-sand-700">
+                <p className="font-numeric tabular text-[10px] text-sand-700">
                   {action.sub}
                 </p>
               </div>
@@ -459,13 +459,13 @@ export function MoveDiagram() {
                   </div>
                   <div className="mt-3 flex items-center gap-2">
                     <motion.span
-                      className="sheen inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-[10px] font-semibold text-primary-foreground"
+                      className="sheen inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-[11px] font-semibold text-primary-foreground"
                       animate={{ scale: phase === "press" ? 0.93 : 1 }}
                       transition={{ duration: 0.16 }}
                     >
                       Approve
                     </motion.span>
-                    <span className="inline-flex items-center rounded-md border border-sand-300 px-3 py-1.5 text-[10px] text-sand-700">
+                    <span className="inline-flex items-center rounded-md border border-sand-300 px-3 py-1.5 text-[11px] text-sand-700">
                       Later
                     </span>
                     <AnimatePresence>
@@ -474,14 +474,14 @@ export function MoveDiagram() {
                           initial={{ opacity: 0, y: 5, scale: 0.9 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0 }}
-                          className="ml-auto rounded-md bg-white px-2 py-1 font-mono text-[9px] text-positive shadow-sm"
+                          className="ml-auto rounded-md bg-white px-2 py-1 font-mono text-[10px] text-positive shadow-sm"
                         >
                           approved ✓
                         </motion.span>
                       )}
                     </AnimatePresence>
                     {phase !== "approved" && (
-                      <span className="ml-auto font-mono text-[8px] text-sand-600">
+                      <span className="ml-auto font-mono text-[9px] text-sand-600">
                         auto-drafted
                       </span>
                     )}

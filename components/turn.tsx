@@ -1,11 +1,106 @@
 "use client";
 
 import * as Scrollytelling from "@bsmnt/scrollytelling";
-import { GrainGradient } from "@paper-design/shaders-react";
-import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Glow } from "./glow";
 import { Scramble } from "./scramble";
+
+/* Hand-drawn phase pictograms: same flat language as the diagrams above. */
+
+function WasteMark() {
+  return (
+    <svg viewBox="0 0 64 32" className="h-8 w-16" aria-hidden>
+      {[0, 1, 2, 3].map((i) => (
+        <rect
+          key={i}
+          x={2 + i * 16}
+          y={9}
+          width={12}
+          height={14}
+          rx={3}
+          fill={i < 2 ? "var(--color-sand-400)" : "none"}
+          stroke="var(--color-sand-700)"
+          strokeWidth="1.5"
+          opacity={i < 2 ? 1 : 0.55}
+        />
+      ))}
+      <line
+        x1={36}
+        y1={26}
+        x2={62}
+        y2={6}
+        stroke="var(--color-pink-500)"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ReallocationMark() {
+  return (
+    <svg viewBox="0 0 64 32" className="h-8 w-16" aria-hidden>
+      <rect
+        x={6}
+        y={14}
+        width={10}
+        height={14}
+        rx={3}
+        fill="var(--chart-neg)"
+      />
+      <rect
+        x={48}
+        y={5}
+        width={10}
+        height={23}
+        rx={3}
+        fill="var(--chart-pos)"
+      />
+      <path
+        d="M 16 8 C 28 -2, 40 -2, 50 4"
+        fill="none"
+        stroke="var(--color-sand-700)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 50 4 l -5.5 -1 M 50 4 l -2 5"
+        stroke="var(--color-sand-700)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function PropagationMark() {
+  return (
+    <svg viewBox="0 0 64 32" className="h-8 w-16" aria-hidden>
+      <circle cx={8} cy={16} r={4.5} fill="var(--color-pink-500)" />
+      {[4, 12, 20, 28].map((y) => (
+        <path
+          key={y}
+          d={`M 12 16 C 30 16, 34 ${y}, 50 ${y}`}
+          fill="none"
+          stroke="var(--color-sand-700)"
+          strokeWidth="1.2"
+          opacity="0.7"
+        />
+      ))}
+      {[4, 12, 20, 28].map((y) => (
+        <circle
+          key={y}
+          cx={54}
+          cy={y}
+          r={3}
+          fill="none"
+          stroke="var(--color-pink-500)"
+          strokeWidth="1.5"
+        />
+      ))}
+    </svg>
+  );
+}
 
 const PHASES = [
   {
@@ -13,7 +108,8 @@ const PHASES = [
     name: "Waste",
     body: "Week one, off your billing APIs: retry storms, abandoned seats, dead scheduled jobs, unopened output. Immediate and unarguable. It pays for the engagement.",
     stat: "$151k surfaced in week one",
-    colors: ["#b57546", "#584b3a", "#e6dfd3"],
+    ground: "bg-sand-200",
+    mark: <WasteMark />,
     emphasized: false,
   },
   {
@@ -21,7 +117,8 @@ const PHASES = [
     name: "Reallocation",
     body: "The story isn't cutting. The money is in the wrong places. Every deployment ranked by cost per successful outcome, so budget moves from the 0.3× to the 9×.",
     stat: "$795k worth redeploying",
-    colors: ["#da627d", "#a53860", "#450920"],
+    ground: "bg-pink-50",
+    mark: <ReallocationMark />,
     emphasized: true,
   },
   {
@@ -29,7 +126,8 @@ const PHASES = [
     name: "Propagation",
     body: "Somewhere in your org a team has already figured it out. We isolate what winners do differently, package it, and verify it replicates.",
     stat: "one winner, four teams",
-    colors: ["#d2c4a5", "#7a6b56", "#ffa5ab"],
+    ground: "bg-umber-200",
+    mark: <PropagationMark />,
     emphasized: false,
   },
 ];
@@ -41,7 +139,6 @@ const PHASES = [
  */
 export function Turn() {
   const [pinned, setPinned] = useState(false);
-  const reduce = useReducedMotion();
   const lineRef = useRef<HTMLDivElement>(null);
   const cardRefs = [
     useRef<HTMLDivElement>(null),
@@ -85,24 +182,20 @@ export function Turn() {
                   phase.emphasized ? "border-primary/40" : "border-border"
                 }`}
               >
-                {/* the abstract band: each phase gets its own weather */}
-                <div className="relative h-16 overflow-hidden">
-                  <GrainGradient
-                    colors={phase.colors}
-                    colorBack="#1a1410"
-                    softness={0.7}
-                    intensity={0.4}
-                    noise={0.3}
-                    speed={reduce ? 0 : 0.4}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                  <span className="absolute left-4 top-3 font-mono text-xs text-white/80">
+                {/* the phase mark: drawn, not generated */}
+                <div
+                  className={`relative flex h-20 items-center justify-between px-6 ${phase.ground}`}
+                >
+                  <span className="font-mono text-xs text-sand-700">
                     {phase.number}
                   </span>
-                  {phase.emphasized && (
-                    <span className="absolute right-3 top-3 rounded-md bg-white/85 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-pink-900">
+                  {phase.mark}
+                  {phase.emphasized ? (
+                    <span className="rounded-md bg-white/85 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-pink-900">
                       the turn
                     </span>
+                  ) : (
+                    <span className="w-10" aria-hidden />
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">

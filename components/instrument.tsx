@@ -38,20 +38,147 @@ const UNITS = [
   },
 ];
 
+/* Drawn marks, same flat language as the diagrams. */
+
+function HalvesMark() {
+  return (
+    <svg viewBox="0 0 32 28" className="h-7 w-8" aria-hidden>
+      <circle
+        cx={16}
+        cy={14}
+        r={10}
+        fill="none"
+        stroke="var(--color-sand-700)"
+        strokeWidth="1.5"
+      />
+      <path d="M 16 4 A 10 10 0 0 0 16 24 Z" fill="var(--color-pink-500)" />
+    </svg>
+  );
+}
+
+function HoldoutMark() {
+  return (
+    <svg viewBox="0 0 40 28" className="h-7 w-10" aria-hidden>
+      <rect
+        x={3}
+        y={6}
+        width={14}
+        height={16}
+        rx={4}
+        fill="var(--color-pink-500)"
+      />
+      <rect
+        x={23}
+        y={6}
+        width={14}
+        height={16}
+        rx={4}
+        fill="none"
+        stroke="var(--color-sand-700)"
+        strokeWidth="1.5"
+        strokeDasharray="3 3"
+      />
+    </svg>
+  );
+}
+
+function BothWaysMark() {
+  return (
+    <svg viewBox="0 0 40 28" className="h-7 w-10" aria-hidden>
+      <path
+        d="M 18 9 H 4 M 4 9 l 4 -3.5 M 4 9 l 4 3.5"
+        stroke="var(--chart-neg)"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M 22 19 H 36 M 36 19 l -4 -3.5 M 36 19 l -4 3.5"
+        stroke="var(--chart-pos)"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 const PROPERTIES = [
   {
     title: "It finds both halves",
     body: "Improves when cost falls or when success rises, so the instrument that finds waste finds value. Cut losers, fund winners, one number.",
+    mark: <HalvesMark />,
   },
   {
     title: "It survives finance",
     body: "Holdout-tested: one team gets access, a matched team doesn't, and the 60-day difference is the evidence. Finance sets the assumptions, not our black box.",
+    mark: <HoldoutMark />,
   },
   {
     title: "It points both directions",
     body: "Underfunded winners get flagged to spend more: rate limits, truncated context, a cheap model where the right answer is worth far more than the tokens.",
+    mark: <BothWaysMark />,
   },
 ];
+
+/* Cost per outcome falling away from a flat baseline: the product's
+   signature chart, one per unit. */
+const CURVES = [
+  [14, 18, 24, 31, 36, 42],
+  [16, 22, 27, 33, 40, 44],
+  [13, 16, 20, 28, 35, 41],
+  [15, 20, 28, 34, 38, 45],
+];
+
+function Counterfactual({ index }: { index: number }) {
+  const points = CURVES[index];
+  const d = points
+    .map((y, i) => `${i === 0 ? "M" : "L"} ${i * 36} ${y}`)
+    .join(" ");
+  return (
+    <div className="hidden items-center gap-4 lg:flex">
+      <svg viewBox="0 0 180 52" className="h-14 w-44" aria-hidden>
+        <line
+          x1={0}
+          y1={10}
+          x2={180}
+          y2={10}
+          stroke="var(--chart-neg)"
+          strokeWidth="1.5"
+          strokeDasharray="4 4"
+          opacity="0.7"
+        />
+        <motion.path
+          key={index}
+          d={d}
+          fill="none"
+          stroke="var(--chart-pos)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </svg>
+      <div className="space-y-1 font-mono text-[9px] text-muted-foreground">
+        <p className="flex items-center gap-1.5">
+          <span
+            className="inline-block h-0.5 w-4"
+            style={{ backgroundColor: "var(--chart-pos)" }}
+          />
+          cost/outcome
+        </p>
+        <p className="flex items-center gap-1.5">
+          <span
+            className="inline-block h-0 w-4 border-t border-dashed"
+            style={{ borderColor: "var(--chart-neg)" }}
+          />
+          pre-AI baseline
+        </p>
+      </div>
+    </div>
+  );
+}
 
 /** The one metric the product owns, denominated in outcomes you can click. */
 export function Instrument() {
@@ -138,7 +265,8 @@ export function Instrument() {
           </div>
 
           {/* the economics of the selected unit, digits rolling as it changes */}
-          <div className="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-3 rounded-xl border border-border bg-card/60 px-6 py-5">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 rounded-xl border border-border bg-card px-6 py-5 shadow-sm">
+            <div className="flex flex-wrap items-baseline gap-x-8 gap-y-3">
             <p className="font-numeric tabular text-sm">
               <NumberFlow
                 value={unit.volume}
@@ -172,6 +300,8 @@ export function Instrument() {
                 of handling time displaced
               </span>
             </p>
+            </div>
+            <Counterfactual index={index} />
           </div>
         </Reveal>
 
@@ -180,7 +310,8 @@ export function Instrument() {
             <Reveal key={prop.title} delay={0.15 + i * 0.12} className="h-full">
               <Glow className="h-full rounded-xl">
                 <div className="h-full rounded-xl border border-border bg-card/60 p-6 transition-colors duration-300 group-hover:border-primary/30">
-                  <h3 className="text-base font-semibold">{prop.title}</h3>
+                  {prop.mark}
+                  <h3 className="mt-4 text-base font-semibold">{prop.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                     {prop.body}
                   </p>
